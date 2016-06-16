@@ -25,18 +25,10 @@ use kartik\select2\Select2;
 
     
 
-    <?=   $form->field($model, 'institute')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(Stdent::find()->all(),'institute','institute'),
-        'language' => 'en',
-        'options' => ['placeholder' => 'Select a insitute ...'],
-        'pluginOptions' => [
-            'allowClear' => true
-            ],
-         ]);
-         ?>
+  
      <?= $form->field($model, 'institute')->dropDownList(
-            ArrayHelper::map(Stdent::find()->all(),'institute','institute'),
-            ['prompt'=>'select company'])
+            ArrayHelper::map(institute::find()->all(),'institute','institute'),
+            ['prompt'=>'select institute'])
             ?>
 
 
