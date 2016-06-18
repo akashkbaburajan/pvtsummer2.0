@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2016 at 12:14 PM
+-- Generation Time: Jun 18, 2016 at 11:38 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.17
 
@@ -93,6 +93,37 @@ INSERT INTO `institute` (`institute`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `interns`
+--
+
+CREATE TABLE IF NOT EXISTS `interns` (
+  `intern_id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_id` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL DEFAULT 'N',
+  `job_description` text NOT NULL,
+  `field` varchar(100) NOT NULL,
+  `stipend` int(11) NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `duration` varchar(100) NOT NULL,
+  PRIMARY KEY (`intern_id`),
+  KEY `company_id` (`company_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `interns`
+--
+
+INSERT INTO `interns` (`intern_id`, `company_id`, `type`, `job_description`, `field`, `stipend`, `location`, `start_date`, `duration`) VALUES
+(1, 2, 'N', 'yii framework', 'web development', 25000, 'bangalore', '1900-12-01', '1 motnh'),
+(2, 4, 'N', 'online web application', 'web development', 15000, 'kochi', '0000-00-00', '2 months'),
+(3, 3, 'N', 'php', 'php', 10000, 'delhi', '0000-00-00', '4 weeks'),
+(4, 3, 'N', 'c++', 'C++', 32000, 'ekm', '0000-00-00', '12 days'),
+(5, 2, 'sa', 'sadza', 'sql', 12313, 'ivide', '2016-06-23', '2 day');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mentor`
 --
 
@@ -111,10 +142,36 @@ CREATE TABLE IF NOT EXISTS `mentor` (
 --
 
 INSERT INTO `mentor` (`name`, `email`, `phone`, `expertise`, `resume`, `Verified`) VALUES
-('sajmal0', 'm6@gmail.com', '8714268343', 'web development', '', 'No'),
+('sajmal0', 'm6@gmail.com', '8714268343', 'web development', '', 'yes'),
 ('sajmal0', 'm6s@gmail.com', '8714268343', 'cool', '', 'No'),
 ('sajmal0', 'm@gmail.com', '8714268343', 'cool', '', 'No'),
+('mohan', 'mohan@gmail.com', '9895717814', 'c++', '', 'No'),
 ('sajmal yousef', 'yousefsajmal1@gmail.com', '9895717814', 'awesome', '', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE IF NOT EXISTS `posts` (
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_title` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `author_id` int(11) NOT NULL,
+  PRIMARY KEY (`post_id`),
+  KEY `author_id` (`author_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`post_id`, `post_title`, `description`, `author_id`) VALUES
+(1, 'doingiteasy Gii', 'fabulous', 1),
+(2, 'post', 'another', 1),
+(3, 'postupdates', 'danjllcalakanother', 1),
+(4, 'manasa', 'stuppid', 1);
 
 -- --------------------------------------------------------
 
@@ -131,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `area_of_interest` text NOT NULL,
   `resume` varchar(200) NOT NULL,
   PRIMARY KEY (`student_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `student`
@@ -142,7 +199,8 @@ INSERT INTO `student` (`student_id`, `name`, `email`, `institute`, `phone`, `are
 (4, '', '', 'NITC', 9087654321, 'harry poter', ''),
 (5, '', '', 'NITC', 9087654321, 'harry poter', ''),
 (6, 'Akash', 'aksnkxl@dnm.as', 'NITC', 6871211111, 'sax,.c ', ''),
-(7, 'sajmal', 'yousef@gmail.com', 'IIM KOZHIKODE', 8714268343, 'c++,c,web dev', '');
+(7, 'sajmal', 'yousef@gmail.com', 'IIM KOZHIKODE', 8714268343, 'c++,c,web dev', ''),
+(8, 'sajmal', 'mohd@gmail.com', 'NITC', 9895717814, 'playing', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
