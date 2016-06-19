@@ -25,4 +25,9 @@ change the dbname to the name of db u r currently using(doingiteasy).
 change the username and password to ur username and password.
 The sql dump is present in doingiteasy.sql file.Import it.
 
+edit in controllers/studentcontroller:
+the if condition under the public function actionCreate() should start like this:
+  $model->save();
+  $FileName = $model->student_id;
+            
 
