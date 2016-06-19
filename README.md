@@ -26,8 +26,25 @@ change the username and password to ur username and password.
 The sql dump is present in doingiteasy.sql file.Import it.
 
 edit in controllers/studentcontroller:     
-the if condition under the public function actionCreate() should start like this:      
-  $model->save();
-  $FileName = $model->student_id;
+     
+  public function actionCreate()
+    {
+        $model = new Stdent();
+
+         if ($model->load(Yii::$app->request->post())) 
+         {
+			$model->save();
+            $FileName = $model->name;
+            $model->file = UploadedFile::getInstance($model,'file');
+            $model->file->saveAs( 'uploads/'.$FileName.'.'.$model->file->extension );
+            $model->resume = 'uploads/'.$FileName.'.'.$model->file->extension;
+
             
+            return $this->redirect(['view', 'id' => $model->student_id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
 
